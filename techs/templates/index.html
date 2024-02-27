@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+<!-- {% load static %} -->
+{% block title %} Accueil {% endblock %}
+  {% block content %}
+
+    <!-- Slider -->
+	<div class="main_slider" style="background-image:url(static/images/accueil.jpg);height:52rem; margin-top: 7rem;">
+    
+		<div class="container fill_height">
+			<div class="row align-items-center fill_height">
+				<div class="col">
+					<div class="main_slider_content">
+						<h6>TechLabs / IT Collection</h6>
+						<h1>Bienvenue sur notre plateforme
+              				<br><hr><a href="{% url 'home' %}" style="color: black;">Tech<span style="color: green;">Labs</span></a>
+            			</h1>
+						<div class="red_button shop_now_button"><a href="#">shop now</a></div> 
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+  <!-- Banner -->
+
+	<div class="banner">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="banner_item align-items-center" style="background-image:url(static/images/phone.jpg)">
+						<div class="banner_category">
+							<a href="{% url 'home' %}">Telephones</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="banner_item align-items-center" style="background-image:url(static/images/pc.jpg)">
+						<div class="banner_category">
+							<a href="{% url 'home' %}">Ordinateurs</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="banner_item align-items-center" style="background-image:url(static/images/accueil.jpg)">
+						<div class="banner_category">
+							<a href="{% url 'home' %}">Accessoires</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<br><br><br>
+	<div class="section_title" style="margin-left: 20rem;">
+		<h2>Quelques Produits De Notre Plateforme</h2>
+	</div><br><br>
+	<div class="new_arrivals">
+	<div class="container">
+	<div class="row">
+		{% for art in article %}
+		<div class="owl-item product_slider_item">
+			<div class="product-item women men">
+				<div class="product">
+					<div class="product_image">
+						<img src="{{art.image.url}}" alt="" >
+					</div>
+					<!-- {% if art.image == "http://default" %}
+					<div class="view overlay">
+						<img class="card-img-top" src="https://via.placeholder.com/400x300">
+					</div>
+					{% else %}
+					<div class="view overlay">
+						<img class="card-img-top" src="{{art.image.url}}">
+					</div>
+					{% endif %} -->
+					<div class="favorite"></div>
+					<div class="product_info">
+						<h4 class="product_name"><a href="#">{{art.title}}</a></h4>
+							<div class="product_price">{{art.prix}} CFA</div>
+							<p class="product_name">{{art.desc|truncatewords:8}}</p>
+							<p class="product_name">{{art.vendeur|truncatewords:8}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+	</div>
+  {% endblock %}
+
+  
